@@ -6,7 +6,8 @@ const Header = (props) => {
   return (
     <header>
       <h1>
-        <span className='car-word'>Mood Tracker</span>
+        <span className='project-title'>Mood Tracker</span>
+        <p className='regular'>This is where we track your mood!</p>
       </h1>
     </header>
   )
