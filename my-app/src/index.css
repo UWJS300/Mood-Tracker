@@ -2,4 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  /*added sample dimensions for chrome extension*/
+  height: 400px;
+  width: 450px;
 }
