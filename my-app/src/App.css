@@ -17,6 +17,26 @@
 .App-intro {
   font-size: large;
 }
+.tabHeader {
+	background:#555;
+	color:#FFF;
+	text-align:center;
+	padding:10px 0;
+}
+.currentMood {
+	width:50%;
+	margin:20px auto;
+	padding:20px;
+	border:1px solid #555;
+}
+.moodEntry div {
+	margin:10px 0;
+}
+.moodSelect {
+	margin:0 0 20px;
+	padding:0 0 10px;
+	border-bottom:1px dotted
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
