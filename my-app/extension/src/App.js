@@ -7,7 +7,7 @@ import Login from './Login';
 
 class App extends Component {
   render() {
-    const userLoggedIn = true; //this needs to be addressed with state
+    const userLoggedIn = false; //this needs to be addressed with state
 
     if (userLoggedIn) {
       return (
