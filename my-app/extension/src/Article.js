@@ -38,13 +38,11 @@ handleImportantOptionChange(event) {
     console.log('Mood comment:', this.state.comment);
     console.log('URL:', this.state.URL);
     console.log('Timestamp:', this.state.timeStamp);
-
-	  
   }
   render () {
     return (
 <div className="moodEntry">
-	<form onSubmit={this.handleFormSubmit}>
+	<form onSubmit={this.handleFormSubmit} id="track-mood">
 		<div className="moodSelect">
 			<div className="radio">
 				<label>
@@ -83,29 +81,31 @@ handleImportantOptionChange(event) {
 				Important
 			</label>
 		</div>
-		
+
 		<div className="commentBox">
 			<label>
 				Comment: <input type="text" value={this.state.comment} onChange={this.handleCommentChange} />
 			</label>
 		</div>
-		<div className="urlBox">
+		<div className="urlBox" >
 			<label>
-				URL: <input type="text" value={this.state.URL} onChange={this.handleURLChange} />
+				URL: <input type="text" id="urlBox" value={this.state.URL} onChange={this.handleURLChange} />
 			</label>
 		</div>
-		<input type="submit" value="Set mood" />
+		<input type="submit" id="current-mood-button" value="Set mood" />
 	</form>
-				
 
-		
+
+
+
+
 		</div>
 
 
 
     );
-  
-	  
+
+
   }
 };
 
