@@ -3,8 +3,9 @@ import React from 'react'
 class Article extends React.Component {
   constructor(props) {
       super(props);
-      this.state = {selectedOption: 'mood1', submittedMood: '', comment: '', URL: '', timeStamp: ''};
+      this.state = {selectedOption: 'mood1', submittedMood: '', comment: '', URL: '', timeStamp: '', important: false};
       this.handleOptionChange = this.handleOptionChange.bind(this);
+	  this.handleImportantOptionChange = this.handleImportantOptionChange.bind(this);
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
       this.handleCommentChange = this.handleCommentChange.bind(this);
       this.handleURLChange = this.handleURLChange.bind(this);
@@ -12,6 +13,14 @@ class Article extends React.Component {
   handleOptionChange(changeEvent) {
     this.setState({
       selectedOption: changeEvent.target.value
+    });
+  }
+handleImportantOptionChange(event) {
+	const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    this.setState({
+      important: value
     });
   }
   handleCommentChange(event) {
@@ -25,6 +34,7 @@ class Article extends React.Component {
     formSubmitEvent.preventDefault()
 	this.setState({submittedMood: this.state.selectedOption});
     console.log('Current mood level:', this.state.selectedOption);
+	console.log('Important?:', this.state.important);
     console.log('Mood comment:', this.state.comment);
     console.log('URL:', this.state.URL);
     console.log('Timestamp:', this.state.timeStamp);
@@ -67,6 +77,13 @@ class Article extends React.Component {
 				</label>
 			</div>
 		</div>
+		<div className="importantEntry">
+			<label>
+				<input type="checkbox" name="important" checked={this.state.important} onChange={this.handleImportantOptionChange}/>
+				Important
+			</label>
+		</div>
+		
 		<div className="commentBox">
 			<label>
 				Comment: <input type="text" value={this.state.comment} onChange={this.handleCommentChange} />
