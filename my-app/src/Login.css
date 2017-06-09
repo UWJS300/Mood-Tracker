@@ -1,0 +1,8 @@
+/* CSS for the login page will go here - probably more styling needed */
+
+.loginBtn {
+  width: 40%;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: medium;
+}
