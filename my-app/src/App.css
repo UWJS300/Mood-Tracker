@@ -1,3 +1,6 @@
+*{
+	box-sizing:border-box;
+}
 .App {
   text-align: center;
 }
@@ -16,6 +19,41 @@
 
 .App-intro {
   font-size: large;
+}
+.tabHeader {
+	background:#555;
+	color:#FFF;
+	text-align:center;
+	padding:10px 0;
+}
+.currentMood, .moodHistory, .moodSettings {
+	width:90%;
+	margin:20px auto;
+	padding:20px;
+	border:1px solid #555;
+}
+.moodEntry div {
+	margin:10px 0;
+}
+.moodSelect, .importantEntry {
+	margin:0 0 20px;
+	padding:0 0 10px;
+	border-bottom:1px dotted
+}
+.graphThumb {
+	width:95%;
+	margin:10px auto;
+	height:300px;
+	background:#555;
+	color:#fff;
+	text-align:center;
+	padding-top:140px;
+}
+.hidden {
+   display:none;
+}
+.show{
+   display:block;
 }
 
 @keyframes App-logo-spin {
