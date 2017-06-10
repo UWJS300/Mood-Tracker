@@ -1,3 +1,17 @@
+//Creates the app object
+const app = {};
+
+app.init = function() { app.reminder.init(); };
+
+app.reminder = {
+    getUserIntervalPref() {
+        const userIntervalPref = document.getElementById('userIntervalPref');
+        console.log({timePreference: userIntervalPref});
+    }
+};
+
+app.reminder.getUserIntervalPref();
+
 /**
 * Updates the URL input field to show current URL.
 * We could also easily take in the page title, too,
@@ -27,7 +41,7 @@ function sendFormData() {
 
 // This runs when the popup HTML has fully loaded
 window.addEventListener('load', function(event) {
-    console.log("listening for events");
+    //console.log("listening for events");
 
     // Handle the form submit event with sendFormData function
     document.getElementById('track-mood').addEventListener('submit', sendFormData);
@@ -38,6 +52,6 @@ window.addEventListener('load', function(event) {
 
     chrome.runtime.getBackgroundPage(function(eventPage) {
         eventPage.getPageDetails(onPageDetailsReceived);
-
   });
+
 });
