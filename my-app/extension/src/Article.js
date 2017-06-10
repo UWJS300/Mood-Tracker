@@ -1,6 +1,10 @@
 import React from 'react'
+import firebase from 'firebase'
+import firebaseui from 'firebaseui'
+import base from './base'
 
 class Article extends React.Component {
+  
   constructor(props) {
       super(props);
       this.state = {selectedOption: 'mood1', submittedMood: '', comment: '', URL: '', timeStamp: '', important: false};
@@ -9,6 +13,9 @@ class Article extends React.Component {
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
       this.handleCommentChange = this.handleCommentChange.bind(this);
       this.handleURLChange = this.handleURLChange.bind(this);
+      this.componentWillMount = this.componentWillMount.bind(this);
+      this.componentWillUnmount = this.componentWillUnmount.bind(this);
+    
     }
   handleOptionChange(changeEvent) {
     this.setState({
@@ -38,10 +45,28 @@ handleImportantOptionChange(event) {
     console.log('Mood comment:', this.state.comment);
     console.log('URL:', this.state.URL);
     console.log('Timestamp:', this.state.timeStamp);
-
-	  
+    
+    this.firebaseRef.push({
+      submittedMood: this.state.selectedOption, important: this.state.important, comment: this.state.comment, URL: this.state.URL, timeStamp: this.state.timeStamp
+    });
+    this.setState({selectedOption: 'mood1', submittedMood: '', comment: '', URL: '', timeStamp: '', important: false});
+    this.componentWillMount()
+ 
   }
+  
+  componentWillMount() {
+    this.firebaseRef = firebase.database().ref('userData/');
+    this.firebaseRef.on('child_added', function(dataSnapshot) {
+    });
+  }
+
+  
+componentWillUnmount() {
+ this.firebaseRef.off();
+}
+
   render () {
+
     return (
 <div className="moodEntry">
 	<form onSubmit={this.handleFormSubmit}>
@@ -108,5 +133,5 @@ handleImportantOptionChange(event) {
 	  
   }
 };
-
+var newURLKey = firebase.database().ref().child('URL').push().key;
 export default Article;
