@@ -15,10 +15,19 @@ class Login extends Component {
   constructor(props) {
       super(props);
       this.state = {loginMessage: null}
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleGoogleSubmit = this.handleGoogleSubmit.bind(this);
+      this.handleGitHubSubmit = this.handleGitHubSubmit.bind(this);
     }
 
-  handleSubmit = (e) => {
+  handleGoogleSubmit = (e) => {
+    e.preventDefault()
+    login(login)
+      .catch((error) => {
+          this.setState(setErrorMsg('Invalid username/password.'))
+        })
+      }
+  
+  handleGitHubSubmit = (e) => {
     e.preventDefault()
     login(login)
       .catch((error) => {
@@ -30,9 +39,13 @@ class Login extends Component {
     return (
       <div>
         <h2>Mindful Reader</h2>
-        <LoginBtn loginMethod="logintofirebasewithgoogle-replacewithreallink" text="Sign in with Google" onSubmit={this.handleSubmit}/>
+      <form onSubmit={this.handleGoogleSubmit}>
+        <LoginBtn loginMethod="logintofirebasewithgoogle-replacewithreallink" text="Sign in with Google"/>
+      </form>
         <br />
-        <LoginBtn loginMethod="logintofirebasewithgithub-replacewithreallink" text="Sign in with Github" />
+      <form onSubmit={this.handleGitHubSubmit}>
+        <LoginBtn loginMethod="logintofirebasewithgithub-replacewithreallink" text="Sign in with Github"/>
+      </form>
         </div>
     );
   }

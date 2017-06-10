@@ -8,5 +8,8 @@ import firebase from 'firebase'
 import firebaseui from 'firebaseui'
 import base from './base'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <App />,
+ document.getElementById('root')
+)
 registerServiceWorker();
