@@ -3,6 +3,7 @@ import './App.css';
 import Article from './Article';
 import History from './History';
 import Settings from './Settings';
+import OnOffSwitch from './OnOffSwitch';
 import Login from './Login';
 
 class App extends Component {
@@ -14,6 +15,10 @@ class App extends Component {
         <div>
         <div className="tabHeader">
           <h2>Mindful Reader: Chrome Extension Version</h2>
+        </div>
+        <div className="options">
+          <h3>Options</h3>
+          <OnOffSwitch />
         </div>
         <div className="currentMood">
       <h3>Current mood</h3>
