@@ -101,7 +101,7 @@ class Settings extends React.Component {
 		<label>
 				Track my mood every: <input type="number" id="userIntervalPref" min="1" max="120" value={this.state.time}  onChange={this.handleTimeChange} /> minutes
 			</label>
-		<input type="submit" value="Update alerts" />
+		<input type="submit" value="Update alerts" id="update-btn" />
 		</form>
       </div>
       </div>
