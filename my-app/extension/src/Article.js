@@ -42,6 +42,7 @@ handleImportantOptionChange(event) {
   render () {
     return (
 <div className="moodEntry">
+  <h3>Current Mood</h3>
 	<form onSubmit={this.handleFormSubmit} id="track-mood">
 		<div className="moodSelect">
 			<div className="radio">
