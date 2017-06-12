@@ -13,25 +13,25 @@ class History extends React.Component {
   }
   handleFormSubmit(formSubmitEvent) {
     formSubmitEvent.preventDefault()
-  
+
   }
   render () {
     return (
 
 		<div className="moodGraph">
-	<div className="graphThumb">Graph goes here
-		</div>
-		<button id="viewHistory">See more history</button>
-				
-</div>
-		
+      <h3>Mood History</h3>
+	     <div className="graphThumb">Graph goes here
+		   </div>
+		   <button id="viewHistory">See more history</button>		
+    </div>
+
 
 
 
 
     );
-  
-	  
+
+
   }
 };
 

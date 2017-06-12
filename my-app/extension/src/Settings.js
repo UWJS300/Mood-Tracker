@@ -65,6 +65,8 @@ class Settings extends React.Component {
 
       <div className="settingsInner">
 
+		<h3>Settings</h3>
+
       <div className="settingsOption sources">
       <h4 onClick={this.handleTabChange}>Sources</h4>
       <div className={this.state.showHideTab}>
