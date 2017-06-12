@@ -82,6 +82,7 @@ componentWillUnmount() {
 
 <div className="moodEntry">
   <h3>Current Mood</h3>
+      <div className="innerTab">
   <div className="urlBox" >
 
   </div>
@@ -140,7 +141,7 @@ componentWillUnmount() {
 
 
 
-
+</div>
 		</div>
 
 

@@ -28,11 +28,21 @@
   text-align: center;
   padding: 10px 0;
 }
-
-.currentMood, .moodHistory, .moodSettings {
-  width: 90%;
-  margin: 20px auto;
-  padding: 0 auto;
+.react-tabs__tab {
+  background:#e5e5e5;
+  border:1px solid #555;
+  border-bottom:none;
+}
+.react-tabs__tab--selected {
+  background:#fff;
+  
+}
+.react-tabs__tab-panel--selected {
+  width: 100%;
+  border-top:1px solid
+}
+ul.tablist {
+    margin-bottom: 0;
 }
 
 .moodEntry div {
@@ -91,11 +101,13 @@
 
 .react-tabs__tab {
   cursor: pointer;
+  border: 1px solid #e3e3e3;
 }
 
 .react-tabs__tab--selected {
-  border: 1px solid #000;
+  
   border-bottom: none;
+  color:#463869;
 }
 
 .react-tabs__tab :hover {
@@ -138,7 +150,34 @@
   background-image: url('/static/media/ic_sentiment_very_satisfied_black_24px.ac649213.svg');
 
 }
-
+.innerTab {
+  padding:10px 20px;
+}
+.currentMood h3, .moodHistory h3, .moodSettings h3 {
+  background:#463869;
+  color:#fff;
+  margin:0 0 15px;
+  padding:10px 20px;
+}
+#options {
+    padding: 10px 20px;
+    background: #bfdbfd;
+}
+.onoffswitch {
+  float:left;
+  margin-right:20px;
+}
+.tablist li {
+    width: 33.3%;
+    padding: 15px 0;
+    text-align: center;
+    font-weight: bold;
+  text-transform:uppercase;
+}
+ul.tablist {
+  padding:0;
+  margin:30px 0 0;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
