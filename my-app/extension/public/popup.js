@@ -14,9 +14,6 @@ app.reminder = {
 
     init: function() {
 
-        // Starts listening for Chrome alarms.
-        chrome.alarms.onAlarm.addListener(app.reminder.trackMoodListener);
-
         //Sets up the values of some key variables in userPreferences object.
         userPreferences.setVars();
 
@@ -34,45 +31,25 @@ app.reminder = {
     run: function() {
         const prefs = userPreferences.getPreferences();
         var enabled = prefs.enabled;
-        var time = prefs.timeOption;
+        var time = prefs.time;
 
-        if (enabled === 'not checked') {
-            return
-        }
-
+        // If app is enabled, then start timed reminders.
+        if (enabled === 'checked') {
         chrome.alarms.clearAll();
-        this.timedReminder(time);
-    },
 
-    // Sends Chrome alarms at selected timing.
-    timedReminder: function(time) {
-        chrome.alarms.create('trackmood', {
-            delayInMinutes: parseInt(time),
-            periodInMinutes: parseInt(time)
+        chrome.runtime.getBackgroundPage(function(eventPage) {
+            //console.log(time);
+            eventPage.timedReminder(time);
         });
-    },
+    } else {
 
-    sitListener: function(alarm) {
-        if(alarm.name === 'trackmood') {
-        app.reminder.displayMessage();
-      }
-    },
-
-    displayMessage: function() {
-    const prefs = userPreferences.getPreferences();
-    const title = 'Track your mood';
-    const messageBody = "Please take a moment to track your mood as you read";
-    const fadeTime = 5000;
-
-    if(Notification.permission === "granted") {
-        let notification = new Notification(title, {
-          body: messageBody,
-          icon: 'img/spine.png',
-          tag: 'Posture Reminder'
-        });
+        // If app is disabled, turn off all alarms.
+        chrome.alarms.clearAll();
     }
 
-}
+    },
+
+
 
 };
 
@@ -112,8 +89,10 @@ document.addEventListener('click', function(e) {
   var target = e.target;
 
   if (target.id === 'update-btn') {
+      console.log("pushed button");
       e.preventDefault();
       userPreferences.save();
+      app.reminder.run();
   }
 });
 
@@ -131,6 +110,7 @@ window.addEventListener('load', function(event) {
     // content.js into the current tab's HTML
 
     chrome.runtime.getBackgroundPage(function(eventPage) {
+        eventPage.listenForAlarms();
         eventPage.getPageDetails(onPageDetailsReceived);
     });
 
