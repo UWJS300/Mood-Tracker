@@ -24,16 +24,34 @@ app.reminder = {
         } else {
             userPreferences.init(defaultTimerSetting);
         }
+        app.reminder.run()
     },
 
     // This is where the reminders will be triggered from. Not hooked up yet.
     run: function() {
         const prefs = userPreferences.getPreferences();
-        var time = prefs.timeOption;
+        var enabled = prefs.enabled;
+        var time = prefs.time;
+
+        // If app is enabled, then start timed reminders.
+        if (enabled === 'checked') {
+        chrome.alarms.clearAll();
+
+        chrome.runtime.getBackgroundPage(function(eventPage) {
+            //console.log(time);
+            eventPage.timedReminder(time);
+        });
+    } else {
+
+        // If app is disabled, turn off all alarms.
         chrome.alarms.clearAll();
     }
-};
 
+    },
+
+
+
+};
 
 function updateStatus() {
     //Needs implementation of notification line.
@@ -73,6 +91,7 @@ document.addEventListener('click', function(e) {
   if (target.id === 'update-btn') {
       e.preventDefault();
       userPreferences.save();
+      app.reminder.run();
   }
 });
 
@@ -90,6 +109,7 @@ window.addEventListener('load', function(event) {
     // content.js into the current tab's HTML
 
     chrome.runtime.getBackgroundPage(function(eventPage) {
+        eventPage.listenForAlarms();
         eventPage.getPageDetails(onPageDetailsReceived);
     });
 
