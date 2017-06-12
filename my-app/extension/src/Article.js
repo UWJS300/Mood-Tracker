@@ -48,7 +48,7 @@ handleImportantOptionChange(event) {
     console.log('Mood comment:', this.state.comment);
     console.log('URL:', this.state.URL);
     console.log('Timestamp:', this.state.timeStamp);
-    this.firebaseRef.set({
+    this.firebaseRef.push({
       submittedMood: this.state.selectedOption, important: this.state.important, comment: this.state.comment, URL: this.state.URL, timeStamp: this.state.timeStamp
     });
     this.setState({selectedOption: 'mood1', submittedMood: '', comment: '', URL: '', timeStamp: '', important: false});
