@@ -66,6 +66,17 @@ function sendFormData() {
     console.log("sending form data")
 }
 
+//Saves settings when update button is clicked.
+document.addEventListener('click', function(e) {
+  var target = e.target;
+
+  if (target.id === 'update-btn') {
+      e.preventDefault();
+      userPreferences.save();
+  }
+});
+
+
 
 // This runs when the popup HTML has fully loaded
 window.addEventListener('load', function(event) {
@@ -81,13 +92,6 @@ window.addEventListener('load', function(event) {
     chrome.runtime.getBackgroundPage(function(eventPage) {
         eventPage.getPageDetails(onPageDetailsReceived);
     });
-
-    //Saves settings when update button is clicked.
-    document.getElementById('update-btn').onclick = function(e) {
-        e.preventDefault();
-        userPreferences.save();
-        //app.reminder.run();
-    };
 
     app.init();
 
