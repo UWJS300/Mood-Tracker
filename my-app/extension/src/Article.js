@@ -7,9 +7,6 @@ import neutral from './img/ic_sentiment_neutral_black_24px.svg'
 import satisfied from './img/ic_sentiment_satisfied_black_24px.svg'
 import verySatisfied from './img/ic_sentiment_very_satisfied_black_24px.svg'
 
-
-
-
 class Article extends React.Component {
   constructor(props) {
       super(props);
@@ -51,10 +48,7 @@ handleImportantOptionChange(event) {
     console.log('Mood comment:', this.state.comment);
     console.log('URL:', this.state.URL);
     console.log('Timestamp:', this.state.timeStamp);
-    
-    
-    
-    this.firebaseRef.push({
+    this.firebaseRef.set({
       submittedMood: this.state.selectedOption, important: this.state.important, comment: this.state.comment, URL: this.state.URL, timeStamp: this.state.timeStamp
     });
     this.setState({selectedOption: 'mood1', submittedMood: '', comment: '', URL: '', timeStamp: '', important: false});
@@ -73,9 +67,8 @@ handleImportantOptionChange(event) {
         userId = 'anonymous'
       }
     });
-    console.log('id', userId)
     this.firebaseRef = firebase.database().ref('userData/' + userId + '/');
-    this.firebaseRef.on('value', function(dataSnapshot) {
+    this.firebaseRef.on('child_added', function(dataSnapshot) {
     });
   }
 
