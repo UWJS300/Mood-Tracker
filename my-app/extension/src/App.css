@@ -1,6 +1,7 @@
-*{
-	box-sizing:border-box;
+* {
+  box-sizing: border-box;
 }
+
 .App {
   text-align: center;
 }
@@ -20,43 +21,104 @@
 .App-intro {
   font-size: large;
 }
+
 .tabHeader {
-	background:#555;
-	color:#FFF;
-	text-align:center;
-	padding:10px 0;
+  background: #555;
+  color: #FFF;
+  text-align: center;
+  padding: 10px 0;
 }
+
 .currentMood, .moodHistory, .moodSettings {
-	width:90%;
-	margin:20px auto;
-	padding:20px;
-	border:1px solid #555;
+  width: 90%;
+  margin: 20px auto;
+  padding: 0 auto;
 }
+
 .moodEntry div {
-	margin:10px 0;
+  margin: 10px 0;
 }
+
 .moodSelect, .importantEntry {
-	margin:0 0 20px;
-	padding:0 0 10px;
-	border-bottom:1px dotted
+  margin: 0 0 20px;
+  padding: 0 0 10px;
+  border-bottom: 1px dotted
 }
+
+.radio {
+  display: inline-grid;
+}
+
+.radio label>input {
+  visibility: hidden;
+  position: absolute;
+}
+
+.radio label>input+img {
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.radio label>input:hover+img {
+  background-color: #cdcdcd;
+}
+
+.radio label>input:checked+img {
+  background-color: #efcd00;
+}
+
+.moodFace {
+  padding: 5px;
+}
+
 .graphThumb {
-	width:95%;
-	margin:10px auto;
-	height:300px;
-	background:#555;
-	color:#fff;
-	text-align:center;
-	padding-top:140px;
+  width: 95%;
+  margin: 10px auto;
+  height: 300px;
+  background: #555;
+  color: #fff;
+  text-align: center;
+  padding-top: 140px;
 }
+
 .hidden {
-   display:none;
+  display: none;
 }
-.show{
-   display:block;
+
+.show {
+  display: block;
+}
+
+.react-tabs__tab {
+  cursor: pointer;
+}
+
+.react-tabs__tab--selected {
+  border: 1px solid #000;
+  border-bottom: none;
+}
+
+.react-tabs__tab :hover {
+  background: #555;
+  cursor: pointer;
+}
+
+.tabList {
+  list-style-type: none;
+  padding: 0;
+  border-bottom: 1px;
+}
+
+.tablist li {
+  padding: 8px 16px;
+  display: inline-block;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
