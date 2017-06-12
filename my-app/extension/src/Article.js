@@ -1,4 +1,9 @@
 import React from 'react'
+import veryDissatisfied from './img/ic_sentiment_very_dissatisfied_black_24px.svg'
+import dissatisfied from './img/ic_sentiment_dissatisfied_black_24px.svg'
+import neutral from './img/ic_sentiment_neutral_black_24px.svg'
+import satisfied from './img/ic_sentiment_satisfied_black_24px.svg'
+import verySatisfied from './img/ic_sentiment_very_satisfied_black_24px.svg'
 
 class Article extends React.Component {
   constructor(props) {
@@ -28,6 +33,7 @@ handleImportantOptionChange(event) {
     this.setState({timeStamp: new Date()});
   }
   handleURLChange(event) {
+    event.preventDefault()
     this.setState({URL: event.target.value});
   }
   handleFormSubmit(formSubmitEvent) {
@@ -41,38 +47,45 @@ handleImportantOptionChange(event) {
   }
   render () {
     return (
+
 <div className="moodEntry">
   <h3>Current Mood</h3>
+  <div className="urlBox" >
+
+  </div>
 	<form onSubmit={this.handleFormSubmit} id="track-mood">
-		<div className="moodSelect">
-			<div className="radio">
+    <label>
+      URL: <input type="text" id="urlBox" value={this.state.URL} onChange={this.handleURLChange} />
+    </label>
+    <div className="moodSelect">
+      <div className="radio">
 				<label>
 				<input type="radio" value="mood1" checked={this.state.selectedOption === 'mood1'} onChange={this.handleOptionChange} />
-				Mood 1
+        <img className="moodFace" src={veryDissatisfied} alt="very dissatisfied"/>
 				</label>
 			</div>
 			<div className="radio">
 				<label>
 				<input type="radio" value="mood2" checked={this.state.selectedOption === 'mood2'} onChange={this.handleOptionChange}/>
-				Mood 2
+        <img className="moodFace" src={dissatisfied} alt="dissatisfied"/>
 				</label>
 			</div>
 			<div className="radio">
 				<label>
 				<input type="radio" value="mood3" checked={this.state.selectedOption === 'mood3'} onChange={this.handleOptionChange}/>
-				Mood 3
+        <img className="moodFace" src={neutral} alt="neutral"/>
 				</label>
 			</div>
 			<div className="radio">
 				<label>
 				<input type="radio" value="mood4" checked={this.state.selectedOption === 'mood4'} onChange={this.handleOptionChange}/>
-				Mood 4
+        <img className="moodFace" src={satisfied} alt="satisfied"/>
 				</label>
 			</div>
 			<div className="radio">
 				<label>
 				<input type="radio" value="mood5" checked={this.state.selectedOption === 'mood5'} onChange={this.handleOptionChange}/>
-				Mood 5
+        <img className="moodFace" src={verySatisfied} alt="very satisfied"/>
 				</label>
 			</div>
 		</div>
@@ -88,12 +101,8 @@ handleImportantOptionChange(event) {
 				Comment: <input type="text" value={this.state.comment} onChange={this.handleCommentChange} />
 			</label>
 		</div>
-		<div className="urlBox" >
-			<label>
-				URL: <input type="text" id="urlBox" value={this.state.URL} onChange={this.handleURLChange} />
-			</label>
-		</div>
-		<input type="submit" id="current-mood-button" value="Set mood" />
+
+		<input type="submit" id="current-mood-button" value="Log my mood" />
 	</form>
 
 
