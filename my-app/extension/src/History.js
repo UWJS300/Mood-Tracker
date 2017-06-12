@@ -1,5 +1,7 @@
 import React from 'react'
 import DataGrab from './DataGrab'
+import './App.css';
+
 
 class History extends React.Component {
   constructor(props) {

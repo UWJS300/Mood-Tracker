@@ -8,7 +8,7 @@ class DataGrab extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {URL: 'this URL', submittedMood: 'this mood'};
+    this.state = {URL1: 'URL1', URL2: 'URL2', URL3: 'URL3', mood1: 'mood1', mood2: 'mood2', mood3: 'mood3', comment1: 'comment1', comment2: 'comment2', comment3: 'comment3'};
     }
   
 componentWillMount(){
@@ -23,30 +23,37 @@ componentWillMount(){
     });
   
 
-  base.bindToState('userData/Jyh3X0OSMpRuB0agGRmF1XmXhh92/-KmNpjfADRzLFh6_mZVy/URL', {
+  base.bindToState('userData/' + userId + '/URL', {
     context: this,
-    state: 'URL',
+    state: 'URL1',
     asArray: false
   });
-  base.bindToState('userData/Jyh3X0OSMpRuB0agGRmF1XmXhh92/-KmNpjfADRzLFh6_mZVy/submittedMood', {
+  base.bindToState('userData/' + userId + '/submittedMood', {
     context: this,
-    state: 'submittedMood',
+    state: 'mood1',
+    asArray: false
+  });
+  base.bindToState('userData/' + userId + '/comment', {
+    context: this,
+    state: 'comment1',
     asArray: false
   });
   
-};
+
+  
+}
+
 
   
   render () {
     
   let display = this.state;
-
-    
+        
     return (
       <div>
-      <p>{display.URL}</p>
-      <p>{display.submittedMood}</p>
-      
+      <div className="dataGroup group1">
+      <p>URL: <a href={display.URL1} target="_blank">{display.URL1}</a><br/>Mood: <span className="moodIcon"><span className={display.mood1}></span></span><br/>Comment: {display.comment1}</p>
+      </div>
       </div>
     );
 
