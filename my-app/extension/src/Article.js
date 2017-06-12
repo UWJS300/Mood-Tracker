@@ -8,16 +8,7 @@ import satisfied from './img/ic_sentiment_satisfied_black_24px.svg'
 import verySatisfied from './img/ic_sentiment_very_satisfied_black_24px.svg'
 
 
-// get user ID
-let userId
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    userId = firebase.auth().currentUser.uid;  
-    console.log(userId)
-  } else {
-    userId = 'anonymous'
-  }
-});
+
 
 class Article extends React.Component {
   constructor(props) {
@@ -62,6 +53,7 @@ handleImportantOptionChange(event) {
     console.log('Timestamp:', this.state.timeStamp);
     
     
+    
     this.firebaseRef.push({
       submittedMood: this.state.selectedOption, important: this.state.important, comment: this.state.comment, URL: this.state.URL, timeStamp: this.state.timeStamp
     });
@@ -71,6 +63,17 @@ handleImportantOptionChange(event) {
   }
   
   componentWillMount() {
+    let userId
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        userId = firebase.auth().currentUser.uid;  
+        console.log(userId)
+        return userId
+      } else {
+        userId = 'anonymous'
+      }
+    });
+    console.log('id', userId)
     this.firebaseRef = firebase.database().ref('userData/' + userId + '/');
     this.firebaseRef.on('value', function(dataSnapshot) {
     });
