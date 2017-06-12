@@ -89,7 +89,6 @@ document.addEventListener('click', function(e) {
   var target = e.target;
 
   if (target.id === 'update-btn') {
-      console.log("pushed button");
       e.preventDefault();
       userPreferences.save();
       app.reminder.run();
