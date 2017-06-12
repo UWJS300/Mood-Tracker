@@ -1,11 +1,14 @@
 // User options are set and stored here.
 const userPreferences = {
 
-    init: function(time) {
-        //Sets properties of userPreferences for working with later.
+    //Sets properties of userPreferences for working with later.
+    setVars: function() {
         this.timeQuestion = document.getElementById('userIntervalPref');
         this.enableQuestion= document.getElementById('app-enabled');
         this.moodQuestion= document.getElementById('track-mood')
+    },
+
+    init: function(time) {
 
         //Sets values of app to defaults.
         this.timeQuestion.value = time;
@@ -27,30 +30,29 @@ const userPreferences = {
 
 // Restores app to previously set condition on second load.
     load: function() {
-        console.log("running loadPreferences")
+
         const preferences = this.getPreferences();
+
+        if(isNaN(preferences.time)) {
+            console.log("setting default");
+            this.timeQuestion.value = defaultTimerSetting;
+        } else {
+            console.log("setting preferred value");
+            this.timeQuestion.value = preferences.time;
+        }
+
         if (preferences.enabled === 'checked') {
             this.enableQuestion.checked = true;
         } else {
-            userPreferences.disableQuestions(true);
+            this.enableQuestion.checked = false;
+            //add functionality for disabling app here.
         }
-        this.timeQuestion.value = preferences.timeOption;
+
     },
 
 
-    disableQuestions: function(bool) {
-    this.timeQuestion.disabled = true;
-    this.moodQuestion.disabled = true;
-},
-
-enableQuestions: function(bool) {
-this.timeQuestion.disabled = true;
-this.moodQuestion.disabled = true;
-},
-
     save: function() {
-        console.log("saving settings")
-      localStorage.setItem('time', document.getElementById('userIntervalPref'));
+      localStorage.setItem('time', this.timeQuestion.value);
 
       if(this.enableQuestion.checked === true) {
         localStorage.setItem('enabled', 'checked');
