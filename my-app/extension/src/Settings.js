@@ -8,7 +8,7 @@ class Settings extends React.Component {
       this.handleSourcesSubmit = this.handleSourcesSubmit.bind(this);
       this.handleTopicsChange = this.handleTopicsChange.bind(this);
       this.handleTopicsSubmit = this.handleTopicsSubmit.bind(this);
-      this.handleAlertsSubmit = this.handleAlertsSubmit.bind(this);
+      //this.handleAlertsSubmit = this.handleAlertsSubmit.bind(this);
       this.handleTabChange = this.handleTabChange.bind(this);
     }
 
