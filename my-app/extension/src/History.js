@@ -23,10 +23,12 @@ class History extends React.Component {
 
 		<div className="moodGraph">
       <h3>Mood History</h3>
+      <div className="innerTab">
 	     <div className="graphThumb"><DataGrab />
 		   </div>
 		   <button id="viewHistory">See more history</button>		
     </div>
+      </div>
 
 
 

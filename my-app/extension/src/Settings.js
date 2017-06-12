@@ -8,7 +8,6 @@ class Settings extends React.Component {
       this.handleSourcesSubmit = this.handleSourcesSubmit.bind(this);
       this.handleTopicsChange = this.handleTopicsChange.bind(this);
       this.handleTopicsSubmit = this.handleTopicsSubmit.bind(this);
-      //this.handleAlertsSubmit = this.handleAlertsSubmit.bind(this);
       this.handleTabChange = this.handleTabChange.bind(this);
     }
 
@@ -59,7 +58,7 @@ class Settings extends React.Component {
       <div className="settingsInner">
 
 		<h3>Settings</h3>
-
+<div className="innerTab">
       <div className="settingsOption sources">
       <h4 onClick={this.handleTabChange}>Sources</h4>
       <div className={this.state.showHideTab}>
@@ -95,6 +94,7 @@ class Settings extends React.Component {
 
 		<input type="submit" value="Update alerts" id="update-settings-btn" />
 		</form>
+      </div>
       </div>
       </div>
 
