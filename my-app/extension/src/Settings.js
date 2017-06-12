@@ -64,7 +64,9 @@ class Settings extends React.Component {
     return (
 
       <div className="settingsInner">
+
 		<h3>Settings</h3>
+
       <div className="settingsOption sources">
       <h4 onClick={this.handleTabChange}>Sources</h4>
       <div className={this.state.showHideTab}>
@@ -99,9 +101,9 @@ class Settings extends React.Component {
       <form onSubmit={this.handleAlertsSubmit} className={this.props.showHideTab}>
 
 		<label>
-				Track my mood every: <input type="number" min="1" max="120" value={this.state.time}  onChange={this.handleTimeChange} /> minutes
+				Track my mood every: <input type="number" id="userIntervalPref" min="1" max="120" value={this.state.time}  onChange={this.handleTimeChange} /> minutes
 			</label>
-		<input type="submit" value="Update alerts" />
+		<input type="submit" value="Update alerts" id="update-btn" />
 		</form>
       </div>
       </div>

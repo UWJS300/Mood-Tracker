@@ -3,6 +3,7 @@ import './App.css';
 import Article from './Article';
 import History from './History';
 import Settings from './Settings';
+import OnOffSwitch from './OnOffSwitch';
 import Login from './Login';
 import TabNavigation from './TabNavigation'
 
@@ -13,10 +14,12 @@ class App extends Component {
     if (userLoggedIn) {
       return (
         <div>
+
           <div className="tabHeader">
             <h2>Mindful Reader: Chrome Extension Version</h2>
           </div>
           <TabNavigation />
+
         </div>
         );
     } else {
