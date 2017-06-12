@@ -75,10 +75,10 @@
   width: 95%;
   margin: 10px auto;
   height: 300px;
-  background: #555;
-  color: #fff;
-  text-align: center;
-  padding-top: 140px;
+  border:2px solid #463869;
+  color: #463869;
+  text-align: left;
+  padding:15px;
 }
 
 .hidden {
@@ -112,6 +112,31 @@
 .tablist li {
   padding: 8px 16px;
   display: inline-block;
+}
+.moodIcon span {
+  height:24px;
+  width:24px;
+  display:inline-block;
+}
+.moodIcon span.mood1 {
+  background-image: url('/static/media/ic_sentiment_very_dissatisfied_black_24px.a47ea525.svg');
+
+}
+.moodIcon span.mood2 {
+  background-image: url('/static/media/ic_sentiment_dissatisfied_black_24px.c26d36e2.svg');
+
+}
+.moodIcon span.mood3 {
+  background-image: url('/static/media/ic_sentiment_neutral_black_24px.914e1593.svg');
+
+}
+.moodIcon span.mood4 {
+  background-image: url('/static/media/ic_sentiment_satisfied_black_24px.7bb0e09e.svg');
+
+}
+.moodIcon span.mood5 {
+  background-image: url('/static/media/ic_sentiment_very_satisfied_black_24px.ac649213.svg');
+
 }
 
 @keyframes App-logo-spin {

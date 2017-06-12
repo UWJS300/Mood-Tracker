@@ -52,7 +52,7 @@ componentWillMount(){
     return (
       <div>
       <div className="dataGroup group1">
-      <p>URL: {display.URL1} | Mood: {display.mood1}<span className={'display.mood1'}></span> | Comment: {display.comment1}</p>
+      <p>URL: <a href={display.URL1} target="_blank">{display.URL1}</a><br/>Mood: <span className="moodIcon"><span className={display.mood1}></span></span><br/>Comment: {display.comment1}</p>
       </div>
       </div>
     );
