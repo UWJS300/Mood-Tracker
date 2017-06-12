@@ -1,4 +1,5 @@
 import React from 'react'
+import DataGrab from './DataGrab'
 
 class History extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class History extends React.Component {
 
 		<div className="moodGraph">
       <h3>Mood History</h3>
-	     <div className="graphThumb">Graph goes here
+	     <div className="graphThumb"><DataGrab />
 		   </div>
 		   <button id="viewHistory">See more history</button>		
     </div>

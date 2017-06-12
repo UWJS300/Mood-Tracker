@@ -1,9 +1,14 @@
 import React from 'react'
+import firebase from 'firebase'
+import base from './base'
 import veryDissatisfied from './img/ic_sentiment_very_dissatisfied_black_24px.svg'
 import dissatisfied from './img/ic_sentiment_dissatisfied_black_24px.svg'
 import neutral from './img/ic_sentiment_neutral_black_24px.svg'
 import satisfied from './img/ic_sentiment_satisfied_black_24px.svg'
 import verySatisfied from './img/ic_sentiment_very_satisfied_black_24px.svg'
+
+
+
 
 class Article extends React.Component {
   constructor(props) {
@@ -14,6 +19,8 @@ class Article extends React.Component {
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
       this.handleCommentChange = this.handleCommentChange.bind(this);
       this.handleURLChange = this.handleURLChange.bind(this);
+      this.componentWillMount = this.componentWillMount.bind(this);
+      this.componentWillUnmount = this.componentWillUnmount.bind(this);
     }
   handleOptionChange(changeEvent) {
     this.setState({
@@ -44,6 +51,38 @@ handleImportantOptionChange(event) {
     console.log('Mood comment:', this.state.comment);
     console.log('URL:', this.state.URL);
     console.log('Timestamp:', this.state.timeStamp);
+    
+    
+    
+    this.firebaseRef.push({
+      submittedMood: this.state.selectedOption, important: this.state.important, comment: this.state.comment, URL: this.state.URL, timeStamp: this.state.timeStamp
+    });
+    this.setState({selectedOption: 'mood1', submittedMood: '', comment: '', URL: '', timeStamp: '', important: false});
+    this.componentWillMount()
+ 
+  }
+  
+  componentWillMount() {
+    let userId
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        userId = firebase.auth().currentUser.uid;  
+        console.log(userId)
+        return userId
+      } else {
+        userId = 'anonymous'
+      }
+    });
+    console.log('id', userId)
+    this.firebaseRef = firebase.database().ref('userData/' + userId + '/');
+    this.firebaseRef.on('value', function(dataSnapshot) {
+    });
+  }
+
+  
+componentWillUnmount() {
+ this.firebaseRef.off();
+
   }
   render () {
     return (
