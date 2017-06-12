@@ -14,7 +14,7 @@ class Login extends Component {
 
   constructor(props) {
       super(props);
-      this.state = {loginMessage: null}
+      this.state = {loginMessage: null, userLoggedIn: false}
       this.handleGoogleSubmit = this.handleGoogleSubmit.bind(this);
       this.handleGitHubSubmit = this.handleGitHubSubmit.bind(this);
     }
@@ -49,7 +49,6 @@ class Login extends Component {
         </div>
     );
   }
-
 }
 
 

@@ -6,10 +6,28 @@ import Settings from './Settings';
 import Login from './Login';
 
 class App extends Component {
-  render() {
-    const userLoggedIn = false; //this needs to be addressed with state
+  
+  constructor(props) {
+      super(props);
+      this.state = {userLoggedIn: false}
+    }
+componentDidMount() {
+  // get a boolean from the 
+  <Login />
+    this.setState({
+      userLoggedIn: true
+    });
 
-    if (userLoggedIn) {
+  }
+ 
+ 
+  render() {
+    //const userLoggedIn = false; //this needs to be addressed with state
+    const loginState = this.state.userLoggedIn
+
+    console.log(loginState)
+
+    if (loginState) {
       return (
         <div>
         <div className="tabHeader">

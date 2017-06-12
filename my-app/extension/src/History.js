@@ -1,33 +1,28 @@
 import React from 'react'
-
+import GetData from './GetData'
+  
 class History extends React.Component {
+ 
   constructor(props) {
-      super(props);
-      this.state = {selectedOption: 'mood1', submittedMood: '', comment: '', URL: '', timeStamp: ''};
-      this.handleOptionChange = this.handleOptionChange.bind(this);
-    }
-  handleOptionChange(changeEvent) {
-    this.setState({
-      selectedOption: changeEvent.target.value
-    });
+    super(props);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
+
   handleFormSubmit(formSubmitEvent) {
     formSubmitEvent.preventDefault()
   
   }
+    
   render () {
+
     return (
 
 		<div className="moodGraph">
-	<div className="graphThumb">Graph goes here
+          <div className="graphThumb">
+        <GetData text="test"/>
+          </div>
+          <button id="viewHistory" onClick={this.handleFormSubmit}>See more history</button>
 		</div>
-		<button id="viewHistory">See more history</button>
-				
-</div>
-		
-
-
-
 
     );
   

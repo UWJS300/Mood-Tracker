@@ -3,6 +3,18 @@ import firebase from 'firebase'
 import firebaseui from 'firebaseui'
 import base from './base'
 
+// get user ID
+var userId
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    userId = firebase.auth().currentUser.uid;  
+  } else {
+    userId = 'anonymous'
+  }
+});
+
+
+
 class Article extends React.Component {
   
   constructor(props) {
@@ -55,8 +67,8 @@ handleImportantOptionChange(event) {
   }
   
   componentWillMount() {
-    this.firebaseRef = firebase.database().ref('userData/');
-    this.firebaseRef.on('child_added', function(dataSnapshot) {
+    this.firebaseRef = firebase.database().ref('userData/' + userId + '/');
+    this.firebaseRef.on('value', function(dataSnapshot) {
     });
   }
 
