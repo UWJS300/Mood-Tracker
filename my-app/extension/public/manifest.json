@@ -3,7 +3,7 @@
 
   "name": "Mindful Reader Chrome Extension",
   "description": "A browser extension that allows you to track your mood while you read the news",
-  "version": "1.0",
+  "version": "1.0.1",
   "permissions": [
   "activeTab"
 ],
