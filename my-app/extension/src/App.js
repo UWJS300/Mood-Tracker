@@ -12,8 +12,7 @@ class App extends Component {
       this.state = {userLoggedIn: false}
     }
 componentDidMount() {
-  // get a boolean from the 
-  <Login />
+  // get a boolean from the Login
     this.setState({
       userLoggedIn: true
     });
