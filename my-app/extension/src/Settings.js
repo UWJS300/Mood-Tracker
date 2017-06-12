@@ -3,12 +3,11 @@ import React from 'react'
 class Settings extends React.Component {
   constructor(props) {
       super(props);
-      this.state = {value: 'Enter sources', topics: 'Enter topics', time: '20', showHideTab: 'show'};
+      this.state = {value: 'Enter sources', topics: 'Enter topics', showHideTab: 'show'};
       this.handleSourcesChange = this.handleSourcesChange.bind(this);
       this.handleSourcesSubmit = this.handleSourcesSubmit.bind(this);
       this.handleTopicsChange = this.handleTopicsChange.bind(this);
       this.handleTopicsSubmit = this.handleTopicsSubmit.bind(this);
-      this.handleTimeChange = this.handleTimeChange.bind(this);
       this.handleAlertsSubmit = this.handleAlertsSubmit.bind(this);
       this.handleTabChange = this.handleTabChange.bind(this);
     }
@@ -42,12 +41,6 @@ class Settings extends React.Component {
       time: event.target.value
     });
    }
-
-  handleAlertsSubmit(event) {
-    event.preventDefault()
-    console.log('Time:', this.state.time, 'minutes');
-
-  }
 
   handleTabChange(event) {
     var css = (this.state.showHideTab === "hidden") ? "show" : "hidden";
