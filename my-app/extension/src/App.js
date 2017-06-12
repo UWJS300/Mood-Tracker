@@ -8,10 +8,24 @@ import Login from './Login';
 import TabNavigation from './TabNavigation'
 
 class App extends Component {
+  
+  constructor(props) {
+      super(props);
+      this.state = {userLoggedIn: false}
+    }
+  
+  componentWillMount(){
+    if(Login){
+      this.setState({userLoggedIn: true})
+      console.log('loggedIn')
+    }
+  }
+  
+  
   render() {
-    const userLoggedIn = true; //this needs to be addressed with state
 
-    if (userLoggedIn) {
+    let userLoggedIn = this.state
+    if (this.state.userLoggedIn) {
       return (
         <div>
 
