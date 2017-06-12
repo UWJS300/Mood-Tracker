@@ -14,6 +14,9 @@ app.reminder = {
 
     init: function() {
 
+        // Starts listening for Chrome alarms.
+        chrome.alarms.onAlarm.addListener(app.reminder.trackMoodListener);
+
         //Sets up the values of some key variables in userPreferences object.
         userPreferences.setVars();
 
@@ -24,16 +27,54 @@ app.reminder = {
         } else {
             userPreferences.init(defaultTimerSetting);
         }
+        app.reminder.run()
     },
 
     // This is where the reminders will be triggered from. Not hooked up yet.
     run: function() {
         const prefs = userPreferences.getPreferences();
+        var enabled = prefs.enabled;
         var time = prefs.timeOption;
-        chrome.alarms.clearAll();
-    }
-};
 
+        if (enabled === 'not checked') {
+            return
+        }
+
+        chrome.alarms.clearAll();
+        this.timedReminder(time);
+    },
+
+    // Sends Chrome alarms at selected timing.
+    timedReminder: function(time) {
+        chrome.alarms.create('trackmood', {
+            delayInMinutes: parseInt(time),
+            periodInMinutes: parseInt(time)
+        });
+    },
+
+    sitListener: function(alarm) {
+        if(alarm.name === 'trackmood') {
+        app.reminder.displayMessage();
+      }
+    },
+
+    displayMessage: function() {
+    const prefs = userPreferences.getPreferences();
+    const title = 'Track your mood';
+    const messageBody = "Please take a moment to track your mood as you read";
+    const fadeTime = 5000;
+
+    if(Notification.permission === "granted") {
+        let notification = new Notification(title, {
+          body: messageBody,
+          icon: 'img/spine.png',
+          tag: 'Posture Reminder'
+        });
+    }
+
+}
+
+};
 
 function updateStatus() {
     //Needs implementation of notification line.
