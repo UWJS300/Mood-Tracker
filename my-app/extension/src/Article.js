@@ -10,7 +10,7 @@ import verySatisfied from './img/ic_sentiment_very_satisfied_black_24px.svg'
 class Article extends React.Component {
   constructor(props) {
       super(props);
-      this.state = {selectedOption: 'mood1', submittedMood: '', comment: '', URL: 'document.getElementById('urlBox')', timeStamp: '', important: false};
+      this.state = {selectedOption: 'mood1', submittedMood: '', comment: '', URL: document.getElementById('urlBox'), timeStamp: '', important: false};
       this.handleOptionChange = this.handleOptionChange.bind(this);
 	  this.handleImportantOptionChange = this.handleImportantOptionChange.bind(this);
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
