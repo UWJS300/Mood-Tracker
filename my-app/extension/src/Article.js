@@ -10,7 +10,7 @@ import verySatisfied from './img/ic_sentiment_very_satisfied_black_24px.svg'
 class Article extends React.Component {
   constructor(props) {
       super(props);
-      this.state = {selectedOption: 'mood1', submittedMood: '', comment: '', URL: '', timeStamp: '', important: false};
+      this.state = {selectedOption: 'mood1', submittedMood: '', comment: '', URL: 'document.getElementById('urlBox')', timeStamp: '', important: false};
       this.handleOptionChange = this.handleOptionChange.bind(this);
 	  this.handleImportantOptionChange = this.handleImportantOptionChange.bind(this);
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -53,14 +53,14 @@ handleImportantOptionChange(event) {
     });
     this.setState({selectedOption: 'mood1', submittedMood: '', comment: '', URL: '', timeStamp: '', important: false});
     this.componentWillMount()
- 
+
   }
-  
+
   componentWillMount() {
     let userId
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        userId = firebase.auth().currentUser.uid;  
+        userId = firebase.auth().currentUser.uid;
         console.log(userId)
         return userId
       } else {
@@ -72,7 +72,7 @@ handleImportantOptionChange(event) {
     });
   }
 
-  
+
 componentWillUnmount() {
  this.firebaseRef.off();
 
